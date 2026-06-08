@@ -1,6 +1,6 @@
 import Topbar from '@/components/Topbar';
 import Sidebar from '@/components/Sidebar';
-import '../../app/globals.css';
+import '@/app/globals.css';
 
 export default function AppLayout({ children }) {
   return (
