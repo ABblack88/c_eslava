@@ -1,66 +1,62 @@
-import Image from "next/image";
-import styles from "./page.module.css";
+import Link from 'next/link';
 
-export default function Home() {
+export default function LandingPage() {
   return (
-    <div className={styles.page}>
-      <main className={styles.main}>
-        <Image
-          className={styles.logo}
-          src="/next.svg"
-          alt="Next.js logo"
-          width={100}
-          height={20}
-          priority
-        />
-        <div className={styles.intro}>
-          <h1>To get started, edit the page.js file.</h1>
+    <div className="landing">
+      {/* Nav */}
+      <header className="topbar">
+        <div className="brand">
+          <div className="brand-logo">CE</div>
+          <div>
+            <div className="brand-name">Centro Eslava</div>
+            <div className="brand-sub">Sistema de Gestión</div>
+          </div>
+        </div>
+        <Link href="/dashboard" className="btn btn-primary">
+          Abrir Sistema →
+        </Link>
+      </header>
+
+      {/* Hero */}
+      <section className="hero" style={{ marginTop: 60 }}>
+        <div>
+          <div className="hero-badge">✨ Versión 4.0 — Ahora en la nube</div>
+          <h1>
+            Gestiona tu clínica<br />
+            <span>sin límites</span>
+          </h1>
           <p>
-            Looking for a starting point or more instructions? Head over to{" "}
-            <a
-              href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              Templates
-            </a>{" "}
-            or the{" "}
-            <a
-              href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              Learning
-            </a>{" "}
-            center.
+            Pacientes, citas, reportes clínicos y pagos — todo desde el navegador,
+            en tiempo real, desde cualquier dispositivo.
           </p>
+          <div className="hero-actions">
+            <Link href="/dashboard" className="btn btn-primary">
+              📊 Ir al Dashboard
+            </Link>
+            <Link href="/pacientes" className="btn btn-ghost">
+              👤 Ver Pacientes
+            </Link>
+          </div>
         </div>
-        <div className={styles.ctas}>
-          <a
-            className={styles.primary}
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Image
-              className={styles.logo}
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={16}
-              height={16}
-            />
-            Deploy Now
-          </a>
-          <a
-            className={styles.secondary}
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Documentation
-          </a>
-        </div>
-      </main>
+      </section>
+
+      {/* Features */}
+      <section className="features">
+        {[
+          { icon: '👤', title: 'Gestión de Pacientes', desc: 'Registro clínico completo: datos personales, medicación, patologías, cirugías y notas.' },
+          { icon: '📅', title: 'Agenda de Citas', desc: 'Programa citas con servicio, horario y estado. Edita y actualiza en segundos.' },
+          { icon: '📋', title: 'Reportes Clínicos', desc: 'Notas estructuradas por cita con soporte para imágenes de examen clínico.' },
+          { icon: '💰', title: 'Control de Pagos', desc: 'Registra cobros en efectivo o tarjeta con cálculo automático de IGV.' },
+          { icon: '⚙️', title: 'Catálogo de Servicios', desc: 'Administra servicios con precios diferenciados por modalidad (normal / convenio).' },
+          { icon: '☁️', title: 'En la Nube', desc: 'Base de datos en Supabase PostgreSQL. Accede desde cualquier PC de la clínica.' },
+        ].map((f) => (
+          <div key={f.title} className="feature-card">
+            <div className="feature-icon">{f.icon}</div>
+            <div className="feature-title">{f.title}</div>
+            <div className="feature-desc">{f.desc}</div>
+          </div>
+        ))}
+      </section>
     </div>
   );
 }

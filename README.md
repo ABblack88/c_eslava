@@ -1,36 +1,72 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Centro Eslava V4.0 — Sistema de Gestión Clínica Web
 
-## Getting Started
+Sistema fullstack de gestión para Centro Eslava, migrado de Python/Flask/SQLite a **Next.js + Supabase PostgreSQL**.
 
-First, run the development server:
+## Stack
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+| Capa | Tecnología |
+|---|---|
+| Frontend | Next.js 14 (App Router) |
+| Backend | Next.js API Routes |
+| Base de datos | Supabase (PostgreSQL) |
+| Estilos | CSS Vanilla (dark mode premium) |
+
+## Módulos
+
+- 📊 **Dashboard** — resumen del día, estadísticas, citas de hoy
+- 👤 **Pacientes** — registro clínico completo, búsqueda, historial
+- 📅 **Citas** — agendamiento, edición, filtros por estado
+- 📋 **Reportes Clínicos** — notas estructuradas por cita (7 secciones)
+- 💰 **Pagos** — registro con autocompletado de monto por servicio
+- ⚙️ **Servicios** — catálogo con precios diferenciados
+
+## Variables de entorno
+
+Crea un archivo `.env.local`:
+
+```env
+NEXT_PUBLIC_SUPABASE_URL=https://yldzsnkyqtjgwuiygxfu.supabase.co
+NEXT_PUBLIC_SUPABASE_ANON_KEY=<tu_anon_key>
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## Desarrollo local
 
-You can start editing the page by modifying `app/page.js`. The page auto-updates as you edit the file.
+```bash
+npm install
+npm run dev
+```
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+Abre [http://localhost:3000](http://localhost:3000)
 
-## Learn More
+## Estructura del proyecto
 
-To learn more about Next.js, take a look at the following resources:
+```
+app/
+  page.js               # Landing page
+  dashboard/page.js     # Dashboard
+  pacientes/page.js     # Lista de pacientes
+  pacientes/[id]/page.js
+  citas/page.js         # Lista de citas
+  citas/[id]/page.js
+  reportes/page.js      # Reportes clínicos
+  pagos/page.js         # Pagos
+  admin/servicios/page.js
+  api/                  # API Routes (backend)
+    dashboard/route.js
+    patients/route.js
+    appointments/route.js
+    reports/route.js
+    payments/route.js
+    services/route.js
+components/
+  Topbar.jsx
+  Sidebar.jsx
+  AppShell.jsx
+lib/
+  supabase.js
+```
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+## Migración de datos
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+Los 12 servicios del sistema original están precargados en Supabase.
+Para migrar pacientes y citas del SQLite anterior, usar el script de migración (pendiente).
