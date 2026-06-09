@@ -23,7 +23,7 @@ function TabUsuarios() {
   const [showForm, setShowForm] = useState(false);
   const [saving, setSaving] = useState(false);
   const [error, setError] = useState('');
-  const [form, setForm] = useState({ full_name: '', email: '', role: 'basic', notes: '' });
+  const [form, setForm] = useState({ full_name: '', email: '', role: 'basic', notes: '', password: '' });
 
   const load = useCallback(async () => {
     setLoading(true);
@@ -46,7 +46,7 @@ function TabUsuarios() {
     const json = await res.json();
     if (res.ok) {
       setShowForm(false);
-      setForm({ full_name: '', email: '', role: 'basic', notes: '' });
+      setForm({ full_name: '', email: '', role: 'basic', notes: '', password: '' });
       load();
     } else {
       setError(json.error || 'Error al guardar.');
@@ -118,6 +118,11 @@ function TabUsuarios() {
               <div className="field">
                 <label className="label">Notas (opcional)</label>
                 <input value={form.notes} onChange={upd('notes')} placeholder="Cargo, área, etc." />
+              </div>
+              <div className="field">
+                <label className="label">Contraseña de acceso</label>
+                <input type="password" value={form.password} onChange={upd('password')}
+                  placeholder="Dejar vacío si no requiere login" autoComplete="new-password" />
               </div>
             </div>
             <div className="flex gap-2 mt-4">
