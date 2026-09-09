@@ -1,72 +1,36 @@
-# Centro Eslava V4.0 — Sistema de Gestión Clínica Web
+# 🏥 Centro Eslava - App Next.js + Supabase
 
-Sistema fullstack de gestión para Centro Eslava, migrado de Python/Flask/SQLite a **Next.js + Supabase PostgreSQL**.
+[![Next.js](https://img.shields.io/badge/Next.js-16.2-black?style=for-the-badge&logo=next.js)](#)
+[![React](https://img.shields.io/badge/React-19.2-61DAFB?style=for-the-badge&logo=react&logoColor=black)](#)
+[![Supabase](https://img.shields.io/badge/Supabase-BaaS-3ECF8E?style=for-the-badge&logo=supabase)](#)
 
-## Stack
+Aplicación web moderna para la gestión del Centro Eslava. Construida con una arquitectura Full-Stack Serverless de vanguardia, empleando el poder de Next.js para el renderizado y Supabase como Backend-as-a-Service (BaaS).
 
-| Capa | Tecnología |
-|---|---|
-| Frontend | Next.js 14 (App Router) |
-| Backend | Next.js API Routes |
-| Base de datos | Supabase (PostgreSQL) |
-| Estilos | CSS Vanilla (dark mode premium) |
+## 🚀 Arquitectura y Tecnologías Clave
 
-## Módulos
+Este repositorio contiene la evolución tecnológica de la plataforma, separando claramente la lógica de negocio y la persistencia de datos:
 
-- 📊 **Dashboard** — resumen del día, estadísticas, citas de hoy
-- 👤 **Pacientes** — registro clínico completo, búsqueda, historial
-- 📅 **Citas** — agendamiento, edición, filtros por estado
-- 📋 **Reportes Clínicos** — notas estructuradas por cita (7 secciones)
-- 💰 **Pagos** — registro con autocompletado de monto por servicio
-- ⚙️ **Servicios** — catálogo con precios diferenciados
+- **Frontend Reactivo:** Renderizado mediante **Next.js** y **React 19**, permitiendo interfaces ultrarrápidas y componentes de última generación.
+- **Backend Serverless (Supabase):** Integración nativa con `@supabase/supabase-js` para autenticación, base de datos PostgreSQL en tiempo real y almacenamiento.
+- **Calidad de Código:** Configuración estricta de `ESLint` para Next.js, asegurando convenciones sólidas y código limpio en todo el proyecto.
 
-## Variables de entorno
+## 🛠️ Stack Tecnológico
 
-Crea un archivo `.env.local`:
+- **Framework:** Next.js 16
+- **Librería UI:** React 19
+- **BaaS & Auth:** Supabase
+- **Linting:** ESLint
 
-```env
-NEXT_PUBLIC_SUPABASE_URL=https://yldzsnkyqtjgwuiygxfu.supabase.co
-NEXT_PUBLIC_SUPABASE_ANON_KEY=<tu_anon_key>
-```
+## 📦 Despliegue y Desarrollo Local
 
-## Desarrollo local
+Para levantar este proyecto en tu entorno local:
 
 ```bash
+# 1. Instalar dependencias
 npm install
+
+# 2. Iniciar el servidor de desarrollo
 npm run dev
 ```
 
-Abre [http://localhost:3000](http://localhost:3000)
-
-## Estructura del proyecto
-
-```
-app/
-  page.js               # Landing page
-  dashboard/page.js     # Dashboard
-  pacientes/page.js     # Lista de pacientes
-  pacientes/[id]/page.js
-  citas/page.js         # Lista de citas
-  citas/[id]/page.js
-  reportes/page.js      # Reportes clínicos
-  pagos/page.js         # Pagos
-  admin/servicios/page.js
-  api/                  # API Routes (backend)
-    dashboard/route.js
-    patients/route.js
-    appointments/route.js
-    reports/route.js
-    payments/route.js
-    services/route.js
-components/
-  Topbar.jsx
-  Sidebar.jsx
-  AppShell.jsx
-lib/
-  supabase.js
-```
-
-## Migración de datos
-
-Los 12 servicios del sistema original están precargados en Supabase.
-Para migrar pacientes y citas del SQLite anterior, usar el script de migración (pendiente).
+> **Nota:** Se requiere configurar las variables de entorno locales `.env.local` con las claves públicas de Supabase (`NEXT_PUBLIC_SUPABASE_URL` y `NEXT_PUBLIC_SUPABASE_ANON_KEY`) para el correcto funcionamiento de las conexiones a la base de datos.
